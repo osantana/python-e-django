@@ -1,5 +1,8 @@
 # Django settings for gerenciador project.
 
+import os
+ROOTDIR = os.path.dirname(__file__)
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -9,8 +12,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = ''           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = ''             # Or path to database file if using sqlite3.
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = os.path.join(ROOTDIR, 'gerenciador.db')
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -76,4 +79,5 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'agenda',
 )
