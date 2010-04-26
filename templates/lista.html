@@ -5,7 +5,10 @@
 <a href="/adiciona/">Adicionar novo item</a>
 <ul>
 {% for item in lista_itens %}
-  <li><a href="/item/{{ item.id }}">{{ item.data|date:'d/m/Y' }} - {{ item.titulo }}</a></li>
+  <li>
+    <a href="/remove/{{ item.id }}"><img src="/media/imagens/lixeira.png" /></a>
+    <a href="/item/{{ item.id }}">{{ item.data|date:'d/m/Y' }} - {{ item.titulo }}</a>
+  </li>
 {% empty %}
   <li>Sem itens na lista</li>
 {% endfor %}
