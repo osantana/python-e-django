@@ -8,7 +8,9 @@ urlpatterns = patterns('',
     # Example:
     # (r'^gerenciador/', include('gerenciador.foo.urls')),
 
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
+    (r'^$', 'agenda.views.index'),
+
+    # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
