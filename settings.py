@@ -82,3 +82,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'agenda',
 )
+
+LOGIN_URL = "/login/"
+LOGOUT_URL = "/logout/"
+LOGIN_REDIRECT_URL = "/"
+
