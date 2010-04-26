@@ -1,6 +1,10 @@
 # -*- encoding: utf-8 -*-
 
-from django.http import HttpResponse
+from django.shortcuts import render_to_response
 
-def index(request):
-    return HttpResponse(u"Olá mundo!")
+from models import ItemAgenda
+
+def lista(request):
+    lista_itens = ItemAgenda.objects.all()
+    return render_to_response("lista.html", {'lista_itens': lista_itens})
+
