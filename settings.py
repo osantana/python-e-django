@@ -102,3 +102,10 @@ LOGIN_URL = "/login/"
 LOGOUT_URL = "/logout/"
 LOGIN_REDIRECT_URL = "/"
 
+DEFAULT_FROM_EMAIL = "???@???"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_HOST_USER="????"
+EMAIL_HOST_PASSWORD=r"????"
+EMAIL_USE_TLS=True
+
