@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 
 from models import ItemAgenda
 from forms import FormItemAgenda
@@ -26,4 +26,8 @@ def adiciona(request):
         form = FormItemAgenda()
 
     return render_to_response("adiciona.html", {'form': form})
+
+def item(request, nr_item):
+    item = get_object_or_404(ItemAgenda, id=nr_item)
+    return render_to_response('item.html', {'item': item})
 

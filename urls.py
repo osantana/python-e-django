@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 
     (r'^$', 'agenda.views.lista'),
     (r'adiciona/$', 'agenda.views.adiciona'),
+    (r'item/(?P<nr_item>\d+)/$', 'agenda.views.item'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
