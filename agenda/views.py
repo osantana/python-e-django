@@ -35,3 +35,11 @@ def item(request, nr_item):
         form = FormItemAgenda(instance=item)
     return render_to_response("item.html", {'form': form})
 
+def remove(request, nr_item):
+    item = get_object_or_404(ItemAgenda, id=nr_item)
+    if request.method == "POST":
+        item.delete()
+        return render_to_response("removido.html", {})
+    else:
+        return render_to_response("remove.html", {'item': item})
+
