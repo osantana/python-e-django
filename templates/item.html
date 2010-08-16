@@ -3,6 +3,7 @@
 {% block corpo %}
 
 <form action="" method="post">
+    {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Atualizar</button>
 </form>
