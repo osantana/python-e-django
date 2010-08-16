@@ -95,7 +95,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'agenda',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
 )
 
 LOGIN_URL = "/login/"
