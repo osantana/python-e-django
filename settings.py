@@ -97,3 +97,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
 )
+
+LOGIN_URL = "/login/"
+LOGOUT_URL = "/logout/"
+LOGIN_REDIRECT_URL = "/"
+
