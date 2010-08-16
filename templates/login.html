@@ -6,6 +6,7 @@
 <p>Seu usuário e senha não conferem. Tente novamente.</p>
 {% endif %}
 <form action="" method="post">
+{% csrf_token %}
 <table>
   <tr><td>{{form.username.label_tag}}</td><td>{{form.username}}</td></tr>
   <tr><td>{{form.password.label_tag}}</td><td>{{form.password}}</td></tr>
