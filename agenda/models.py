@@ -14,6 +14,11 @@ class ItemAgenda(models.Model):
     participantes = models.ManyToManyField(User,
                            related_name='item_participantes')
 
+    def __unicode__(self):
+        return u"Titulo: %s Data/Hora:%s / %s" % (
+                self.titulo, self.data, self.hora)
+
+
 # Funções que tratam sinais podem receber parâmetros
 # diferentes em situações distintas. Neste caso, o mais seguro
 # é receber um parâmetro do tipo **kwargs
@@ -26,12 +31,21 @@ def envia_email(**kwargs):
 
     for participante in item.participantes.all():
         if participante.email:
-            dados = (item.titulo,
-                     datetime.strftime(item.data, "%d/%m/%Y"),
-                     item.hora)
+            dados = {
+                'titulo': item.titulo,
+                'data': datetime.strftime(item.data, "%d/%m/%Y"),
+                'hora': item.hora,
+                'descricao': item.descricao,
+            }
+            subject = "[evento] %(titulo)s dia %(data)s as %(hora)s"
+            message = ("Evento: %(titulo)s\n"
+                       "Dia: %(data)s\n"
+                       "Hora: %(hora)s\n"
+                       "\n"
+                       "%(descricao)s")
             participante.email_user(
-                subject="[evento] %s dia %s as %s" % dados,
-                message="Evento: %s\nDia: %s\nHora: %s" % dados,
+                subject=subject % dados,
+                message=message % dados,
                 from_email=item.usuario.email
             )
 
