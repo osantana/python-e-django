@@ -76,6 +76,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'gerenciador.urls'
@@ -96,6 +97,8 @@ INSTALLED_APPS = (
     'agenda',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    # Django Debug Toolbar
+    'debug_toolbar',
 )
 
 LOGIN_URL = "/login/"
@@ -108,4 +111,7 @@ EMAIL_PORT=587
 EMAIL_HOST_USER="????"
 EMAIL_HOST_PASSWORD=r"????"
 EMAIL_USE_TLS=True
+
+# Django Debug Toolbar configuration
+INTERNAL_IPS = ('127.0.0.1',)
 
