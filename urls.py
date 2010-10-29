@@ -10,6 +10,10 @@ urlpatterns = patterns('',
     # (r'^gerenciador/', include('gerenciador.foo.urls')),
 
     (r'^$', 'agenda.views.lista'),
+
+    (r'^help/$', 'django.views.generic.simple.direct_to_template',
+                    {'template': 'help.html'}),
+
     (r'adiciona/$', 'agenda.views.adiciona'),
     (r'item/(?P<nr_item>\d+)/$', 'agenda.views.item'),
     (r'remove/(?P<nr_item>\d+)/$', 'agenda.views.remove'),
