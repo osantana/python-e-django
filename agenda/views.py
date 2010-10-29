@@ -2,6 +2,7 @@
 
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 
 from models import ItemAgenda
 from forms import FormItemAgenda
@@ -27,7 +28,8 @@ def adiciona(request):
         # Exibe formulário em branco
         form = FormItemAgenda()
 
-    return render_to_response("adiciona.html", {'form': form})
+    return render_to_response("adiciona.html", {'form': form},
+            context_instance=RequestContext(request))
 
 @login_required
 def item(request, nr_item):
@@ -39,7 +41,9 @@ def item(request, nr_item):
             return render_to_response("salvo.html", {})
     else:
         form = FormItemAgenda(instance=item)
-    return render_to_response("item.html", {'form': form})
+    return render_to_response("item.html", {'form': form},
+            context_instance=RequestContext(request))
+
 
 @login_required
 def remove(request, nr_item):
@@ -47,6 +51,6 @@ def remove(request, nr_item):
     if request.method == "POST":
         item.delete()
         return render_to_response("removido.html", {})
-    else:
-        return render_to_response("remove.html", {'item': item})
+    return render_to_response("remove.html", {'item': item},
+                context_instance=RequestContext(request))
 
