@@ -6,7 +6,7 @@
 <p><a href="/help/">Ajuda</a></p>
 <p><a href="/adiciona/">Adicionar novo item</a></p>
 <ul>
-{% for item in lista_itens %}
+{% for item in itens_list %}
   <li>
     <a href="/remove/{{ item.id }}"><img src="/media/imagens/lixeira.png" /></a>
     <a href="/item/{{ item.id }}">{{ item.data|date:'d/m/Y' }} - {{ item.titulo }}</a>
@@ -15,5 +15,22 @@
   <li>Sem itens na lista</li>
 {% endfor %}
 </ul>
+
+<ul>
+{% if has_previous %}
+    <li><a href="?page={{ previous }}">anterior</a></li>
+{% endif %}
+{% for page_number in page_range %}
+    {% ifequal page page_number %}
+        <li>{{ page_number }}</li>
+    {% else %}
+        <li><a href="?page={{ page_number }}">{{ page_number }}</a></li>
+    {% endifequal %}
+{% endfor %}
+{% if has_next %}
+    <li><a href="?page={{ next }}">próxima</a></li>
+{% endif %}
+</ul>
+
 
 {% endblock %}
